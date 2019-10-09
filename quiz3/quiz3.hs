@@ -1,3 +1,8 @@
+--Creating custom functions using
+--1_Recursion
+--2_List comprehension
+--3_Lamdas, higher order functions
+
 
 reverse_1::[a]->[a]
 reverse_1 [] = []
