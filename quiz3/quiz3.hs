@@ -66,6 +66,39 @@ init_2 xs = [x | (x,y)<- zip xs [1..], y /= length xs]
 
 -------------------------------------------------
 
+factors_2::Int->[Int]
+factors_2 n = [x | x<-[1..n], n`mod`x == 0]
+
+prime_2::Int->Bool
+prime_2 n = factors_2 n == [1,n]
+
+primes_2::Int->[Int]
+primes_2 k = [x | x<-[1..k], prime_2 x]
+
+-------------------------------------------------
+
+map_1::(a->b)->[a]->[b]
+map_1 _ [] = []
+map_1 f (x:xs) = f x: map f xs
+
+map_2::(a->b)->[a]->[b]
+map_2 f xs = [f x | x <- xs]
+
+-------------------------------------------------
+
+filter_1::(a->Bool)->[a]->[a]
+filter_1 _ [] = []
+filter_1 p (x:xs)
+    | p x       = x : filter_1 p xs
+    | otherwise = filter_1 p xs
+
+filter_2::(a->Bool)->[a]->[a]
+filter_2 p xs = [x | x <- xs, p x == True]
+
+-------------------------------------------------
+
+iterate_1::(a -> a) -> a -> [a]
+iterate_1 f x = x : iterate_1 f (f x)
 
 
 main = putStrLn "Hello, World!"
